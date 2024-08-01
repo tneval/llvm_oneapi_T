@@ -158,7 +158,8 @@ def do_configure(args):
     if args.disable_preview_lib:
         sycl_preview_lib = "OFF"
 
-    install_dir = os.path.join(abs_obj_dir, "install")
+    #install_dir = os.path.join(abs_obj_dir, "install")
+    install_dir = "/home/tapio/PROJECT/Software/DPC++_T"
 
     cmake_cmd = [
         "cmake",
@@ -178,12 +179,19 @@ def do_configure(args):
         "-DLLVM_ENABLE_PROJECTS={}".format(llvm_enable_projects),
         "-DSYCL_BUILD_PI_HIP_PLATFORM={}".format(sycl_build_pi_hip_platform),
         "-DLLVM_BUILD_TOOLS=ON",
+        "-DLLVM_ENABLE_RUNTIMES=openmp",
+        "-DBUILD_SHARED_LIBS=ON",
+        "-DLLVM_ENABLE_EH=ON",
+        "-DLLVM_ENABLE_RTTI=ON",
+        "-DLLVM_PARALLEL_LINK_JOBS=64",
+        "-DOPENMP_ENABLE_LIBOMPTARGET=OFF",
+        "-DLLVM_STATIC_LINK_CXX_STDLIB=ON",
         "-DSYCL_ENABLE_WERROR={}".format(sycl_werror),
         "-DCMAKE_INSTALL_PREFIX={}".format(install_dir),
         "-DSYCL_INCLUDE_TESTS=ON",  # Explicitly include all kinds of SYCL tests.
         "-DLLVM_ENABLE_DOXYGEN={}".format(llvm_enable_doxygen),
         "-DLLVM_ENABLE_SPHINX={}".format(llvm_enable_sphinx),
-        "-DBUILD_SHARED_LIBS={}".format(llvm_build_shared_libs),
+        #"-DBUILD_SHARED_LIBS={}".format(llvm_build_shared_libs),
         "-DSYCL_ENABLE_XPTI_TRACING={}".format(sycl_enable_xpti_tracing),
         "-DLLVM_ENABLE_LLD={}".format(llvm_enable_lld),
         "-DXPTI_ENABLE_WERROR={}".format(xpti_enable_werror),
