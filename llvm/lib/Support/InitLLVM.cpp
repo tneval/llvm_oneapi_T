@@ -15,6 +15,7 @@
 #include "llvm/Support/PrettyStackTrace.h"
 #include "llvm/Support/Signals.h"
 #include "llvm/Support/SwapByteOrder.h"
+#include <iostream>
 
 #ifdef _WIN32
 #include "llvm/Support/Windows/WindowsSupport.h"
@@ -38,6 +39,9 @@ using namespace llvm::sys;
 
 InitLLVM::InitLLVM(int &Argc, const char **&Argv,
                    bool InstallPipeSignalExitHandler) {
+
+std::cout << "InitLLVM::InitLLVM()" << std::endl;
+
 #ifndef NDEBUG
   static std::atomic<bool> Initialized{false};
   assert(!Initialized && "InitLLVM was already initialized!");

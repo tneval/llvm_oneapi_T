@@ -159,7 +159,8 @@ def do_configure(args):
         sycl_preview_lib = "OFF"
 
     #install_dir = os.path.join(abs_obj_dir, "install")
-    install_dir = "/home/tapio/PROJECT/Software/DPC++_T"
+    #install_dir = "/home/tapio/PROJECT/Software/DPC++_T"
+    install_dir = "/home/tapio/PROJECT/Software/sycl_toolchain"
 
     cmake_cmd = [
         "cmake",
