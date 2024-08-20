@@ -6,6 +6,7 @@ import subprocess
 import sys
 
 
+
 def do_configure(args):
     # Get absolute path to source directory
     abs_src_dir = os.path.abspath(
