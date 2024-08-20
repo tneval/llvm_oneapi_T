@@ -35,6 +35,8 @@
 #include <stddef.h>    // for size_t
 #include <type_traits> // for enable_if_t, decay_t, integra...
 
+#include <iostream>
+
 namespace sycl {
 inline namespace _V1 {
 namespace detail {
@@ -388,6 +390,7 @@ joint_reduce(Group g, Ptr first, Ptr last, BinaryOperation binary_op) {
 template <typename Group>
 std::enable_if_t<is_group_v<std::decay_t<Group>>, bool>
 any_of_group(Group g, bool pred) {
+  //std::cout << "GroupAny from dpc++" << std::endl;
 #ifdef __SYCL_DEVICE_ONLY__
 #if defined(__NVPTX__)
   if constexpr (ext::oneapi::experimental::is_user_constructed_group_v<Group>) {
@@ -395,6 +398,7 @@ any_of_group(Group g, bool pred) {
                                 pred);
   }
 #endif
+
   return sycl::detail::spirv::GroupAny(g, pred);
 #else
   (void)g;

@@ -40,7 +40,7 @@ using namespace llvm::sys;
 InitLLVM::InitLLVM(int &Argc, const char **&Argv,
                    bool InstallPipeSignalExitHandler) {
 
-std::cout << "InitLLVM::InitLLVM()" << std::endl;
+//std::cout << "InitLLVM::InitLLVM()" << std::endl;
 
 #ifndef NDEBUG
   static std::atomic<bool> Initialized{false};
